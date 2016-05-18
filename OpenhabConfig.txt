@@ -1,0 +1,12 @@
+
+Items
+/* CanonHeater Via MQTT */
+Number	CanonSetPoint "Cannon Setting" 														{ mqtt=">[MyMQTT:mygateway1-in/3/1/1/0/45:command:*:default]",imperihab="room:Heatpump,label:Heater,curmodeid:CanonStatus,currentTempId:CanonTemp,minVal:18,maxVal:28,availableModes:Off-Low-Med-High-VHigh" }
+String CanonStatus "Cannon Heater Mode [%s]" 												{ mqtt=">[MyMQTT:mygateway1-in/3/1/1/0/21:command:*:default]" }
+Number	CanonTemp 	"Canon Heater Temp [%.1f °C]"	<temperature>	(gEntry)				{ mqtt="<[MyMQTT:mygateway1-out/3/1/1/0/0:state:default]" }
+
+Sitemap
+Selection item=CanonStatus icon="heating" mappings=[Off="Off",Low="Low",Med="Med",High="High",VHigh="VHigh"]
+Text item=CanonTemp
+
+
