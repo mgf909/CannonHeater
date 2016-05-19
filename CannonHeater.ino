@@ -24,12 +24,18 @@
  * http://www.mysensors.org/build/temp
  */
 
+#define TESTBED 1 //Set to 1 for benchtest hardware - different id, parameters and Temp sensor addresses.
 
 // Enable debug prints to serial monitor
 #define MY_DEBUG 
 
+#if TESTBED == 1 
+#define MY_NODE_ID 10 //ID for testing
+#endif
 
-#define MY_NODE_ID 3
+#if TESTBED == 0
+#define MY_NODE_ID 3 //ID for production
+#endif
 
 #define MY_DEFAULT_TX_LED_PIN A0
 #define MY_DEFAULT_RX_LED_PIN A1
